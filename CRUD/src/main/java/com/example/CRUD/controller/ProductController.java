@@ -3,6 +3,7 @@ package com.example.CRUD.controller;
 import com.example.CRUD.domain.product.Product;
 import com.example.CRUD.domain.product.ProductRepository;
 import com.example.CRUD.domain.product.RequestProduct;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class ProductController {
 
     @GetMapping
     public ResponseEntity getAllProducts() {
-        var allProducts = repository.findAll();
+        var allProducts = repository.findAllByActiveTrue();
         return ResponseEntity.ok(allProducts);
     }
 
@@ -46,8 +47,13 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteProduct(@PathVariable String id){
-        repository.deleteById(id);
-        return ResponseEntity.noContent().build();
-
+        Optional<Product> optionalProduct = repository.findById(id);
+        if (optionalProduct.isPresent()) {
+            Product product = optionalProduct.get();
+            Product.setActive(false);
+            return ResponseEntity.noContent().build();
+        } else {
+            throw new EntityNotFoundException();
+        }
     }
 }

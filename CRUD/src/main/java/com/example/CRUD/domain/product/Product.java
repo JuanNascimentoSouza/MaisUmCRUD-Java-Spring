@@ -28,6 +28,8 @@ public class Product {
     }
 
     public static void setPrice_in_cents(Number price_in_cents) {
+    }
 
+    public static void setActive(     Boolean active ){
     }
 }
