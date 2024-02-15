@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
+import {MatTableModule, MatTableDataSource} from '@angular/material/table';
+
 
 @Component({
   selector: 'app-root',
