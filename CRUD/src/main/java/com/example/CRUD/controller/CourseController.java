@@ -1,32 +1,49 @@
 package com.example.CRUD.controller;
 
 import com.example.CRUD.domain.model.Course;
-import com.example.CRUD.repository.CourseRepository;
-import lombok.AllArgsConstructor;
+import com.example.CRUD.service.CourseService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.util.List;
 
+@Validated
 @RestController
 @RequestMapping("/api/courses")
-@AllArgsConstructor
 public class CourseController {
-    private final CourseRepository courseRepository;
-    //@RequestMapping(method = RequestMethod.GET)
+    private final CourseService courseService;
+    public CourseController(CourseService courseService) {
+        this.courseService = courseService;
+    }
     @GetMapping
     public @ResponseBody List<Course> list() {
-        return courseRepository.findAll();
+        return courseService.list();
     }
 
-    //@RequestMapping(method = RequestMethod.POST)
+    @GetMapping("/{id}")
+    public Course findById(@PathVariable @NotNull @Positive Long id) {
+        return courseService.findById(id);
+    }
+
     @PostMapping
-    public ResponseEntity<Course> create(@RequestBody Course course) {
-        // System.out.println(course.getName());
-        //return courseRepository.save(course);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(courseRepository.save(course));
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Course create(@RequestBody @Valid Course course) {
+        return courseService.create(course);
     }
 
+    @PutMapping("/{id}")
+    public Course update(@PathVariable @NotNull @Positive Long id,
+                         @RequestBody @Valid Course course) {
+        return courseService.update(id, course);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable @NotNull @Positive Long id) {
+        courseService.delete(id);
+    }
 }
