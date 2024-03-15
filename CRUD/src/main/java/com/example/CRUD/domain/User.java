@@ -1,8 +1,18 @@
 package com.example.CRUD.domain;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class User {
     private Long id;
+
+    @NotBlank(message = "Name is required")
+    @Size(max = 100, message = "Name must be less than 100 characters")
     private String name;
+
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email should be valid")
     private String email;
 
     public User(){
