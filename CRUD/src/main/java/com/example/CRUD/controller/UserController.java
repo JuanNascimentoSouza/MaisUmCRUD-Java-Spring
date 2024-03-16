@@ -1,6 +1,7 @@
 package com.example.CRUD.controller;
 
 import com.example.CRUD.domain.User;
+import com.example.CRUD.exception.UserNotFoundException;
 import com.example.CRUD.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class UserController {
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         User user = userService.getUserById(id);
         if(user==null) {
-            return ResponseEntity.notFound().build();
+            throw new UserNotFoundException(id);
         }
         return ResponseEntity.ok(user);
     }
