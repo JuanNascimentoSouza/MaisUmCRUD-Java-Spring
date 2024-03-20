@@ -1,6 +1,6 @@
 package com.example.CRUD.service;
 
-import com.example.CRUD.domain.User;
+import com.example.CRUD.domain.UserDTO;
 import com.example.CRUD.repository.UserRepository;
 
 public class UserService {
@@ -11,15 +11,15 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User createUser(User user){
+    public UserDTO createUser(UserDTO user){
         return userRepository.save(user);
     }
 
-    public User getUserById(Long id) {
+    public UserDTO getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    public User updateUser(Long id, User user) {
+    public UserDTO updateUser(Long id, UserDTO user) {
         user.setId(id);
         return userRepository.save(user);
     }

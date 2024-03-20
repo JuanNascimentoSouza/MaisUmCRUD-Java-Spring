@@ -1,6 +1,6 @@
 package com.example.CRUD.userservicetest;
 
-import com.example.CRUD.domain.User;
+import com.example.CRUD.domain.UserDTO;
 import com.example.CRUD.repository.UserRepository;
 import com.example.CRUD.service.UserService;
 import org.junit.Test;
@@ -27,10 +27,10 @@ public class UserServiceTest {
 
     @Test
     public void testCreateUser(){
-        User user = new User(1L,"Test","test@example.com");
-        when(userRepository.save(any(User.class))).thenReturn(user);
+        UserDTO user = new UserDTO(1L,"Test","test@example.com");
+        when(userRepository.save(any(UserDTO.class))).thenReturn(user);
 
-        User createdUser = userService.createUser(user);
+        UserDTO createdUser = userService.createUser(user);
 
         assertEquals(user.getName(),createdUser.getName());
         assertEquals(user.getEmail(),createdUser.getEmail());
@@ -39,10 +39,10 @@ public class UserServiceTest {
 
     @Test
     public void testGetUserById() {
-        User user = new User(1L,"Test2","test@example.com");
+        UserDTO user = new UserDTO(1L,"Test2","test@example.com");
         when(userRepository.findById(1L)).thenReturn(Optional.of(user));
 
-        User foundUser = userService.getUserById(1L);
+        UserDTO foundUser = userService.getUserById(1L);
 
         assertEquals(user.getName(),foundUser.getName());
         assertEquals(user.getEmail(),foundUser.getEmail());
@@ -52,7 +52,7 @@ public class UserServiceTest {
     public void testGetById_UserNotFound(){
         when(userRepository.findById(1L)).thenReturn(Optional.empty());
 
-        User foundUser = userService.getUserById(1L);
+        UserDTO foundUser = userService.getUserById(1L);
 
         assertNull(foundUser,"User should be null");
     }

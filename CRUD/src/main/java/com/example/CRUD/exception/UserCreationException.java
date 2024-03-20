@@ -1,16 +1,16 @@
 package com.example.CRUD.exception;
 
-import com.example.CRUD.domain.User;
+import com.example.CRUD.domain.UserDTO;
 
 public class UserCreationException extends RuntimeException{
-    private final User user;
+    private final UserDTO user;
 
-    public UserCreationException(User user, String message) {
+    public UserCreationException(UserDTO user, String message) {
         super("Failed to create user: " + user + ". Reason: " + message);
         this.user = user;
     }
 
-    public User getUser() {
+    public UserDTO getUser() {
         return user;
     }
 

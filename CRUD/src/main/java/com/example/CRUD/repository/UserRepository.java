@@ -1,14 +1,16 @@
 package com.example.CRUD.repository;
 
-import com.example.CRUD.domain.User;
+import com.example.CRUD.domain.UserDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User,Long> {
-    User save(User user);
+@Repository
+public interface UserRepository extends JpaRepository<UserDTO,Long> {
+    UserDTO save(UserDTO user);
 
-    Optional<User> findById(Long id);
+    Optional<UserDTO> findById(Long id);
 
     void deleteById(Long id);
 }

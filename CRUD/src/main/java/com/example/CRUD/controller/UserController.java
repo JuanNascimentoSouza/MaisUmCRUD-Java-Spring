@@ -1,7 +1,8 @@
 package com.example.CRUD.controller;
 
-import com.example.CRUD.domain.User;
+import com.example.CRUD.domain.UserDTO;
 import com.example.CRUD.exception.UserNotFoundException;
+import com.example.CRUD.mapper.UserMapper;
 import com.example.CRUD.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,24 +18,25 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        User user = userService.getUserById(id);
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
+        UserDTO user = userService.getUserById(id);
         if(user==null) {
             throw new UserNotFoundException(id);
         }
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(UserMapper.toDTO(user));
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-       User savedUser = userService.createUser(user);
-        return ResponseEntity.ok(savedUser);
+    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
+        UserDTO user = UserMapper.toEntity(userDTO);
+        UserDTO savedUser = userService.createUser(user);
+        return ResponseEntity.ok(UserMapper.toDTO(savedUser));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id,@RequestBody User user) {
+    public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @RequestBody UserDTO user) {
         user.setId(id);
-        User updateUser = userService.updateUser(id, user);
+        UserDTO updateUser = userService.updateUser(id, user);
         return ResponseEntity.ok(updateUser);
     }
 
