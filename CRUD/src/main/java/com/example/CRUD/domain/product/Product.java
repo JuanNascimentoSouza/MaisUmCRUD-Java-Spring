@@ -14,22 +14,14 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
+
     private String name;
-    private Number price_in_cents;
-    private Boolean active;
+
+    private Integer price_in_cents;
 
     public Product(RequestProduct requestProduct) {
         this.name = requestProduct.name();
         this.price_in_cents = requestProduct.price_in_cents();
-        this.active = true;
-    }
 
-    public static void setName(String name) {
-    }
-
-    public static void setPrice_in_cents(Number price_in_cents) {
-    }
-
-    public static void setActive(     Boolean active ){
     }
 }
