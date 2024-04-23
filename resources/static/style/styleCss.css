@@ -131,7 +131,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  cursor: pointer;
   color: #fff;
   max-width: 1280px;
 }
@@ -140,33 +139,11 @@ header {
   height: 60px;
   display: flex;
   align-items: center;
-  cursor: pointer;
   color: #fff;
   max-width: 1280px;
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
-}
-
-.navbar-formEvento {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  color: #fff;
-  max-width: 1280px;
-  flex-wrap: wrap;
-  gap: 30px;
-}
-
-.logo-formEvento {
-  position: relative;
-  left: 15%;
-}
-
-.cadastroEventos{
-  border-left: 1px solid #dde0e4;
-  padding-left: 16px;
 }
 
 .address .deliver {
@@ -233,10 +210,25 @@ header {
   font-weight: 600;
 }
 
-.account {
+.account-index {
   display: flex;
+  cursor: pointer;
+  background-color: #4c7caf;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
 }
 
+.account-formEvento {
+  display: flex;
+}
 
 .account .account-icon {
   font-size: 2.5rem
@@ -300,7 +292,7 @@ header {
   background-position: center;
   background-size: cover;
   position: relative;
-  -webkit-mask-image: linear-gradient(to top, transparent -10%, black 40%);
+  mask-image: linear-gradient(to top, transparent -10%, black 40%);
 
 }
 
@@ -409,7 +401,27 @@ header {
 
 /* formEvento */
 
-.container {
+.navbar-formEvento {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  max-width: 1280px;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.logo-formEvento {
+  position: relative;
+  left: 15%;
+}
+
+.cadastroEvento{
+  border-left: 1px solid #dde0e4;
+  padding-left: 16px;
+}
+
+.container-formEvento {
   display: flex;
   position: relative;
   left: 10%;
@@ -493,4 +505,125 @@ header {
   cursor: pointer;
   border-radius: 8px;
 }
+
+/* detalhesEvento */
+
+.navbar-detalhesEvento {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  max-width: 1280px;
+  flex-wrap: wrap;
+  gap: 30px;
+  background-color: black;
+}
+
+.detalhesEvento{
+  border-left: 1px solid #dde0e4;
+  padding-left: 16px;
+}
+
+.logo-detalhesEvento {
+  position: relative;
+  left: 15%;
+}
+
+.box-detalhesEvento {
+  display: block !important;
+  width: 100% !important;
+  height: 33px !important;
+  padding: 5px 16px !important;
+  font-size: 13px !important;
+  line-height: 1.846 !important;
+  color: #50525f !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 1px solid rgb(144, 144, 144) !important;
+  border-radius: 3px !important;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075) !important;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075) !important;
+  -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s !important;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s !important;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s !important;
+}
+
+.text-detalhesEvento {
+  position: relative;
+  top: 15px;
+  left: 10px;
+  font-size: 16px; 
+  font-weight: bold;
+  line-height: 1.5; 
+  color: #333; 
+  margin-bottom: 15px;
+  font-family: Arial, sans-serif;
+}
+
+.button-detalhesEvento {
+  background-color: #4c7caf;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+/* listaEventos */
+
+.menu {
+  background-color: #000000; /* Cor de fundo da navbar */
+  padding: 10px 20px; /* Espaçamento interno */
+  display: flex; /* Organizar os elementos lado a lado */
+  justify-content: space-between; /* Espaço entre os elementos */
+}
+
+.navbar-listaEvento, .navbar-listaEvento-button {
+  display: flex; /* Organizar os elementos dentro de cada seção */
+  align-items: center; /* Alinhar verticalmente */
+}
+
+.brand-logo {
+  color: #fff; /* Cor do texto do logo */
+  font-size: 24px; /* Tamanho da fonte do logo */
+  text-decoration: none; /* Remover sublinhado */
+  margin-right: 20px; /* Espaçamento à direita */
+}
+
+.button-listaEvento {
+  background-color: #4c7caf;
+  border: none;
+  color: white;
+  padding: 1px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.button-cadastro {
+  list-style: none; /* Remover marcadores de lista */
+  margin: 0; /* Remover margem padrão */
+  padding: 0; /* Remover preenchimento padrão */
+}
+
+.button-cadastro li {
+  display: inline-block; /* Exibir itens da lista em linha */
+  margin-left: 20px; /* Espaçamento entre itens da lista */
+}
+
+.button-cadastro li a {
+  color: #fff; /* Cor do texto dos links */
+  text-decoration: none; /* Remover sublinhado */
+  padding: 10px 15px; /* Espaçamento interno dos links */
+  border-radius: 5px; /* Bordas arredondadas */
+  border: 1px solid #fff; /* Borda dos links */
+}
+
 
